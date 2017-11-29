@@ -78,6 +78,7 @@ class ViewController: NSViewController, NSUserNotificationCenterDelegate, NSTabl
     //Returns the title of the selected language in the languagesPopup
     var selectedLanguageName : String
     {
+        manageSelectedLanguageName = languagesPopup.titleOfSelectedItem!
         return languagesPopup.titleOfSelectedItem!
     }
     
@@ -244,6 +245,7 @@ class ViewController: NSViewController, NSUserNotificationCenterDelegate, NSTabl
     {
         updateUIFieldsForSelectedLanguage()
         generateClasses()
+        print("选择的语言版本\(selectedLanguageName)")
         UserDefaults.standard.set(selectedLanguageName, forKey: "selectedLanguage")
     }
     
@@ -388,7 +390,7 @@ class ViewController: NSViewController, NSUserNotificationCenterDelegate, NSTabl
         saveButton.isEnabled = false
         var str = sourceText.string!
         
-        if str.characters.count == 0{
+        if str.count == 0{
             runOnUiThread{
                 //Nothing to do, just clear any generated files
                 self.files.removeAll(keepingCapacity: false)
@@ -397,7 +399,7 @@ class ViewController: NSViewController, NSUserNotificationCenterDelegate, NSTabl
             return;
         }
         var rootClassName = classNameField.stringValue
-        if rootClassName.characters.count == 0{
+        if rootClassName.count == 0{
             rootClassName = "RootClass"
         }
         sourceText.isEditable = false

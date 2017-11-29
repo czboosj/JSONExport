@@ -68,7 +68,7 @@ extension String{
     - returns: the converted version
     */
     func lowercaseFirstChar() -> String{
-        if self.characters.count > 0{
+        if self.count > 0{
             let range = Range(startIndex ..< characters.index(startIndex, offsetBy: 1))
             let firstLowerChar = self.substring(with: range).lowercased()
             
@@ -85,7 +85,7 @@ extension String{
     - returns: the converted version
     */
     func uppercaseFirstChar() -> String{
-        if self.characters.count > 0{
+        if self.count > 0{
             let range = Range(startIndex ..< characters.index(startIndex, offsetBy: 1))
             let firstUpperChar = self.substring(with: range).uppercased()
             

@@ -310,7 +310,13 @@ class FilesContentBuilder{
         //Fix property name that could be a reserved keyword
         if lang.reservedKeywords != nil && lang.reservedKeywords.contains(propertyName.lowercased()){
             //Property name need to be suffixed by proper suffix, any ideas of better generlized prefix/suffix?
-            propertyName += "Field"
+            if (propertyName == "id" && (manageSelectedLanguageName.range(of: "ObjectiveC") != nil)){
+                propertyName = "ID"
+            }else{
+                propertyName += "Field"
+            }
+            
+            
         }
         return propertyName
     }
